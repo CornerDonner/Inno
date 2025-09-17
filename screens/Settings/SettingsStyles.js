@@ -1,6 +1,7 @@
-// styles/SettingsStyles.js
+// screens/Settings/SettingsStyles.js
 import { StyleSheet } from 'react-native';
-import { colors, spacing } from '../../styles/NavbarStyles';
+import { colors, spacing } from '../NavbarStyles'; 
+// ^ fra screens/Settings/ én mappe op til screens/, hvor NavbarStyles.js ligger
 
 export default StyleSheet.create({
   container: {
