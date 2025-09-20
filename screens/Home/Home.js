@@ -5,45 +5,44 @@ import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import styles from './HomeStyles';
 
-// Definerer en konstant liste af biler med id, mærke, model og år
-const BILER = [
-  { id: '1', maerke: 'Volvo',   model: 'XC40',  aar: 2022 },
-  { id: '2', maerke: 'BMW',     model: '320i',  aar: 2019 },
-  { id: '3', maerke: 'Audi',    model: 'A4',    aar: 2021 },
-  { id: '4', maerke: 'Toyota',  model: 'Corolla', aar: 2018 },
-  { id: '5', maerke: 'Tesla',   model: 'Model 3', aar: 2023 },
+// Liste over værktøj med id, navn, kategori og evt. år/stand
+const VAERKTOEJ = [
+  { id: '1', navn: 'Boremaskine',   kategori: 'El-værktøj', stand: 'God' },
+  { id: '2', navn: 'Cirkelsav',     kategori: 'El-værktøj', stand: 'Som ny' },
+  { id: '3', navn: 'Hammer',        kategori: 'Håndværktøj', stand: 'Brugt' },
+  { id: '4', navn: 'Stiksav',       kategori: 'El-værktøj', stand: 'God' },
+  { id: '5', navn: 'Vaterpas',      kategori: 'Måleværktøj', stand: 'Som ny' },
 ];
 
-// Definerer HomeScreen-komponenten som standard eksport
+// HomeScreen-komponenten
 export default function HomeScreen() {
-  // Funktion til at gengive hvert element i listen (en bil)
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      {/* Viser bilens mærke og model */}
-      <Text style={styles.carTitle}>{item.maerke} {item.model}</Text>
-      {/* Viser bilens år */}
-      <Text style={styles.carMeta}>År: {item.aar}</Text>
+      {/* Viser værktøjets navn */}
+      <Text style={styles.carTitle}>{item.navn}</Text>
+      {/* Viser kategori og stand */}
+      <Text style={styles.carMeta}>
+        Kategori: {item.kategori} | Stand: {item.stand}
+      </Text>
     </View>
   );
 
-  // Returnerer komponentens layout
   return (
     <View style={styles.container}>
       {/* Titel på skærmen */}
-      <Text style={styles.title}>Velkommen til Hjem</Text>
+      <Text style={styles.title}>Velkommen til Lently</Text>
       {/* Beskrivende tekst */}
-      <Text style={styles.body}>Dette er Home skærmen.</Text>
+      <Text style={styles.body}>Her kan du se en liste over tilgængeligt værktøj.</Text>
 
-      {/* Sektionstitel for bil-listen */}
-      <Text style={styles.sectionTitle}>Biler</Text>
-      {/* FlatList til at vise listen af biler */}
+      {/* Sektionstitel for værktøj-listen */}
+      <Text style={styles.sectionTitle}>Værktøj</Text>
       <FlatList
-        data={BILER} // Dataen der skal vises
-        renderItem={renderItem} // Funktion til at gengive hvert element
-        keyExtractor={(item) => item.id} // Unik nøgle for hvert element
-        contentContainerStyle={styles.listContent} // Styling til listen
-        ItemSeparatorComponent={() => <View style={styles.separator} />} // Separator mellem elementer
-        showsVerticalScrollIndicator={false} // Skjuler scroll-indikator
+        data={VAERKTOEJ}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
